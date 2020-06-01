@@ -2,10 +2,9 @@
 
 SELECT 
   t.Name,
-  COUNT(*) AS "Sold"
+  SUM(il.Quantity) AS "Sold"
 FROM InvoiceLine il
-JOIN Invoice i ON i.InvoiceId = il.InvoiceId
 JOIN Track t ON t.TrackId = il.TrackId
-GROUP BY il.TrackId
-ORDER BY COUNT(il.TrackId) DESC
+GROUP BY t.Name
+ORDER BY SUM(il.Quantity) DESC
 LIMIT 5;

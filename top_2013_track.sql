@@ -6,7 +6,7 @@ SELECT
 FROM (
   SELECT
     t.Name as Name,
-    COUNT(il.InvoiceLineId) AS Sales
+    SUM(il.InvoiceLineId) AS Sales
   FROM Invoice i
   JOIN InvoiceLine il ON i.InvoiceId = il.InvoiceId
   JOIN Track t ON t.TrackId = il.TrackId
